@@ -83,60 +83,62 @@ class LinkedInAPIClient:
             print("❌ [LINKEDIN ERROR] ACCESS_TOKEN atau PERSON_URN belum dikonfigurasi.")
             return None
 
-        # Attempt 1: Modern REST posts API
-        rest_url = "https://api.linkedin.com/rest/posts"
-        payload_rest = {
+        # Attempt 1: Standard UGC Posts endpoint (Most reliable for member social posting)
+        ugc_url = "https://api.linkedin.com/v2/ugcPosts"
+        payload_ugc = {
             "author": self.person_urn,
-            "commentary": text,
-            "visibility": "PUBLIC",
-            "distribution": {
-                "feedDistribution": "MAIN_FEED",
-                "targetEntities": [],
-                "thirdPartyDistributionChannels": []
-            },
             "lifecycleState": "PUBLISHED",
-            "isReshareDisabledByAuthor": False
+            "specificContent": {
+                "com.linkedin.ugc.ShareContent": {
+                    "shareCommentary": {
+                        "text": text
+                    },
+                    "shareMediaCategory": "NONE"
+                }
+            },
+            "visibility": {
+                "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+            }
         }
 
         try:
-            req = urllib.request.Request(
-                rest_url,
-                data=json.dumps(payload_rest).encode("utf-8"),
-                headers=self.get_headers(),
+            req_ugc = urllib.request.Request(
+                ugc_url,
+                data=json.dumps(payload_ugc).encode("utf-8"),
+                headers={
+                    "Authorization": f"Bearer {self.access_token}",
+                    "Content-Type": "application/json",
+                    "X-Restli-Protocol-Version": "2.0.0"
+                },
                 method="POST"
             )
-            with urllib.request.urlopen(req, timeout=20) as response:
-                post_urn = response.headers.get("x-restli-id") or response.headers.get("x-linkedin-id")
-                if not post_urn and response.status in (200, 201):
-                    post_urn = f"{self.person_urn}_post"
-                print(f"✅ [LINKEDIN SUCCESS] Postingan berhasil tayang via REST API! (ID: {post_urn})")
-                return post_urn
-        except urllib.error.HTTPError as e:
-            err_body = e.read().decode("utf-8") if e.fp else str(e)
-            print(f"⚠️ [REST API NOTICE] Mencoba endpoint cadangan (ugcPosts)... Error: {e.code} - {err_body}")
+            with urllib.request.urlopen(req_ugc, timeout=20) as resp_ugc:
+                res_json = json.loads(resp_ugc.read().decode("utf-8"))
+                ugc_id = res_json.get("id")
+                print(f"✅ [LINKEDIN SUCCESS] Postingan berhasil tayang via UGC Posts! (ID: {ugc_id})")
+                return ugc_id
+        except Exception as e_ugc:
+            print(f"⚠️ [UGC POST NOTICE] Mencoba endpoint REST posts... Error: {e_ugc}")
 
-            # Attempt 2: Classic ugcPosts endpoint
-            ugc_url = "https://api.linkedin.com/v2/ugcPosts"
-            payload_ugc = {
+            # Attempt 2: Modern REST posts API fallback
+            rest_url = "https://api.linkedin.com/rest/posts"
+            payload_rest = {
                 "author": self.person_urn,
-                "lifecycleState": "PUBLISHED",
-                "specificContent": {
-                    "com.linkedin.ugc.ShareContent": {
-                        "shareCommentary": {
-                            "text": text
-                        },
-                        "shareMediaCategory": "NONE"
-                    }
+                "commentary": text,
+                "visibility": "PUBLIC",
+                "distribution": {
+                    "feedDistribution": "MAIN_FEED",
+                    "targetEntities": [],
+                    "thirdPartyDistributionChannels": []
                 },
-                "visibility": {
-                    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
-                }
+                "lifecycleState": "PUBLISHED",
+                "isReshareDisabledByAuthor": False
             }
 
             try:
-                req_ugc = urllib.request.Request(
-                    ugc_url,
-                    data=json.dumps(payload_ugc).encode("utf-8"),
+                req = urllib.request.Request(
+                    rest_url,
+                    data=json.dumps(payload_rest).encode("utf-8"),
                     headers={
                         "Authorization": f"Bearer {self.access_token}",
                         "Content-Type": "application/json",
@@ -144,14 +146,12 @@ class LinkedInAPIClient:
                     },
                     method="POST"
                 )
-                with urllib.request.urlopen(req_ugc, timeout=20) as resp_ugc:
-                    res_json = json.loads(resp_ugc.read().decode("utf-8"))
-                    ugc_id = res_json.get("id")
-                    print(f"✅ [LINKEDIN SUCCESS] Postingan berhasil tayang via UGC Posts! (ID: {ugc_id})")
-                    return ugc_id
-            except Exception as e_ugc:
-                print(f"❌ [LINKEDIN ERROR] Gagal memposting ke LinkedIn: {e_ugc}")
+                with urllib.request.urlopen(req, timeout=20) as response:
+                    post_urn = response.headers.get("x-restli-id") or response.headers.get("x-linkedin-id")
+                    if not post_urn and response.status in (200, 201):
+                        post_urn = f"{self.person_urn}_post"
+                    print(f"✅ [LINKEDIN SUCCESS] Postingan berhasil tayang via REST API! (ID: {post_urn})")
+                    return post_urn
+            except Exception as e_rest:
+                print(f"❌ [LINKEDIN ERROR] Gagal memposting ke LinkedIn: {e_rest}")
                 return None
-        except Exception as e_general:
-            print(f"❌ [LINKEDIN NETWORK ERROR]: {e_general}")
-            return None
