@@ -47,24 +47,42 @@
       "In the ever-evolving landscape",
       "Delve into",
       "Game-changer",
+      "Game changer",
       "Revolutionize",
+      "Revolutionary",
       "It's a testament to",
       "Let's unpack this",
+      "Let's dive in",
       "Look no further",
-      "Harness the power of"
+      "Harness the power of",
+      "Unlock the potential",
+      "Elevate your",
+      "Seamless integration",
+      "Cutting-edge solution",
+      "Robust architecture",
+      "Without further ado",
+      "Here's the thing"
     ],
     "banned_phrases_id": [
       "Di era digital yang serba cepat ini",
+      "Di zaman yang serba modern ini",
       "Tak bisa dipungkiri lagi",
       "Revolusioner",
       "Mengubah segalanya secara radikal",
-      "Solusi pamungkas untuk semua masalah"
+      "Solusi pamungkas untuk semua masalah",
+      "Mari kita selami lebih dalam",
+      "Tanpa berlama-lama lagi",
+      "Siapa sangka",
+      "Membuka potensi tanpa batas",
+      "Solusi mutakhir",
+      "Kunci sukses utama"
     ],
     "formatting_rules": [
-      "Hook 2 baris pertama harus tajam dan memicu klik '...see more'",
-      "Gunakan jarak baris ganda (double whitespace) untuk kenyamanan baca di mobile",
+      "Hook 2 baris pertama harus tajam, langsung ke masalah/data riil, dan memicu klik '...see more'",
+      "Bebas kata-kata promosi kosong, meta-announcements ('Mari kita bahas...'), dan fake-candid openers ('Jujur saja...')",
+      "Gunakan jarak baris ganda (double whitespace) untuk kenyamanan baca di layar mobile",
       "Hindari emoji berlebihan; gunakan bullet points tegas (📌, ↳, →, •)",
-      "Setiap klaim harus didukung metrik atau contoh alur kerja nyata",
+      "Setiap klaim harus didukung metrik nyata atau perbandingan alur kerja (misal: 8 jam manual vs 3 detik script)",
       "Panjang postingan optimal: 800 - 1.800 karakter"
     ]
   }
