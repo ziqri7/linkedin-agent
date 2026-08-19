@@ -33,10 +33,11 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
             """
             self.wfile.write(html.encode("utf-8"))
         else:
+            err = params.get("error_description", ["Gagal otorisasi"])[0]
             self.send_response(400)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.end_headers()
-            self.wfile.write("<h1>❌ Gagal menangkap authorization code.</h1>".encode("utf-8"))
+            self.wfile.write(f"<h1>❌ Error dari LinkedIn: {err}</h1><p>Pastikan produk 'Share on LinkedIn' sudah di-request di tab Products.</p>".encode("utf-8"))
 
     def log_message(self, format, *args):
         pass # Silence HTTP server logs
@@ -57,7 +58,7 @@ def run_token_setup():
             client_secret = input("2. Masukkan LINKEDIN_CLIENT_SECRET: ").strip()
 
     redirect_uri = "http://localhost:8000/callback"
-    scopes = "openid profile email w_member_social"
+    scopes = "w_member_social"
 
     auth_url = (
         f"https://www.linkedin.com/oauth/v2/authorization?"
@@ -106,20 +107,48 @@ def run_token_setup():
         return
 
     # Ambil Profile & Person URN
-    userinfo_url = "https://api.linkedin.com/v2/userinfo"
-    req_user = urllib.request.Request(userinfo_url, headers={"Authorization": f"Bearer {access_token}"})
-
     person_urn = ""
+    user_name = "Pengguna LinkedIn"
+
+    # Percobaan 1: OpenID userinfo
     try:
-        with urllib.request.urlopen(req_user) as resp:
+        userinfo_url = "https://api.linkedin.com/v2/userinfo"
+        req_user = urllib.request.Request(userinfo_url, headers={"Authorization": f"Bearer {access_token}"})
+        with urllib.request.urlopen(req_user, timeout=10) as resp:
             user_data = json.loads(resp.read().decode("utf-8"))
             sub = user_data.get("sub", "")
-            person_urn = f"urn:li:person:{sub}"
-            user_name = user_data.get("name", "Pengguna LinkedIn")
-            print(f"👤 Profil Terhubung: {user_name} ({person_urn})")
-    except Exception as e:
-        print(f"⚠️ Gagal mengambil userinfo otomatis ({e}). Mencoba input manual.")
-        person_urn = input("Masukkan Person URN Anda (contoh: urn:li:person:XXXXX): ").strip()
+            if sub:
+                person_urn = f"urn:li:person:{sub}" if not sub.startswith("urn:li:") else sub
+                user_name = user_data.get("name", user_name)
+    except Exception:
+        pass
+
+    # Percobaan 2: Legacy me endpoint
+    if not person_urn:
+        try:
+            me_url = "https://api.linkedin.com/v2/me"
+            req_me = urllib.request.Request(me_url, headers={"Authorization": f"Bearer {access_token}"})
+            with urllib.request.urlopen(req_me, timeout=10) as resp_me:
+                data_me = json.loads(resp_me.read().decode("utf-8"))
+                uid = data_me.get("id", "")
+                if uid:
+                    person_urn = f"urn:li:person:{uid}"
+                    fname = data_me.get("localizedFirstName", "")
+                    lname = data_me.get("localizedLastName", "")
+                    user_name = f"{fname} {lname}".strip() or user_name
+        except Exception:
+            pass
+
+    if person_urn:
+        print(f"👤 Profil Terhubung: {user_name} ({person_urn})")
+    else:
+        print("\n⚠️ Person URN tidak terdeteksi otomatis.")
+        print("💡 Tips: Anda bisa memasukkan username/ID profil LinkedIn Anda, atau tekan Enter untuk menggunakan default.")
+        manual_id = input("Masukkan ID Profil LinkedIn (atau URN): ").strip()
+        if manual_id:
+            person_urn = f"urn:li:person:{manual_id}" if not manual_id.startswith("urn:li:") else manual_id
+        else:
+            person_urn = f"urn:li:person:{client_id[:10]}"
 
     # Tulis ke .env
     env_content = f"""# LinkedIn API Credentials (Auto-Generated)
