@@ -1,0 +1,42 @@
+name: LinkedIn Automated Poster (Cron)
+
+on:
+  schedule:
+    # 1. Posting Pagi (08:30 WITA / 07:30 WIB / 00:30 UTC) - Senin sampai Jumat
+    - cron: '30 0 * * 1-5'
+    # 2. Posting Siang (12:30 WITA / 11:30 WIB / 04:30 UTC) - Opsional Midweek
+    - cron: '30 4 * * 2,3,4'
+
+  # Trigger Manual Kapan Saja dari HP / Web GitHub
+  workflow_dispatch:
+    inputs:
+      language:
+        description: 'Pilih Bahasa Postingan (id = Indonesia, en = English)'
+        required: true
+        default: 'id'
+        type: choice
+        options:
+          - id
+          - en
+
+jobs:
+  run-linkedin-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute LinkedIn Agent Pipeline
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+          MOCK_MODE: "False"
+          LANGUAGE: ${{ github.event.inputs.language || 'id' }}
+        run: |
+          python scheduled_runner.py
