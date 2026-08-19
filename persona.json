@@ -1,6 +1,6 @@
 {
   "name": "LinkedIn Tech & Automation Authority",
-  "role": "Practical Workflow Automation & AI Systems Engineer",
+  "growth_strategy": "Fase 1 (0-3 Bulan): Poin dulu baru koin menyusul. Fokus 100% pada penambahan followers B2B, reputasi arsitektur sistem, repost, bookmark/save, dan diskusi industri tanpa jualan kaku.",
   "target_audience": {
     "indonesian": [
       "Pemilik Bisnis & Founder UMKM/Startup",
@@ -35,10 +35,10 @@
       "focus": "Kenapa webhook sederhana sering mengalahkan multi-agent framework rumit"
     },
     {
-      "id": "business_cta",
-      "title_id": "Diskusi Alur Kerja & Tawaran Solusi",
-      "title_en": "Workflow Discussion & Strategic Inbound CTA",
-      "focus": "Mengajak audiens mendiskusikan bottleneck proses kerja di tim mereka"
+      "id": "thought_leadership_cta",
+      "title_id": "Refleksi Operasional & Diskusi Terbuka",
+      "title_en": "Operational Reflection & Community Discussion",
+      "focus": "Membangun top-of-mind authority, memicu bookmark/save, dan mengajak audiens follow untuk case study berikutnya"
     }
   ],
   "anti_slop_rules": {

@@ -36,7 +36,7 @@ class LinkedInContentScheduler:
                     {"title": "Penyimpanan & Keamanan", "desc": "Setiap transaksi memiliki log ID unik, mencegah pesanan ganda atau salah hitung stok."}
                 ],
                 "impact": "Waktu lembur admin terpangkas 80%, tingkat kesalahan rekap turun ke 0%, dan laporan penjualan siap ditinjau secara instan setiap saat.",
-                "cta": "Banyak yang mengira sistem seperti ini harus mahal dan rumit, padahal arsitektur sederhana berbasis API sudah lebih dari cukup untuk menyelesaikan masalah operasional tahunan.\n\nApakah alur kerja di tim Anda masih ada yang direkap secara manual? Mari diskusi di kolom komentar! 👇",
+                "cta": "Efisiensi sejati bukan soal menambah software mahal, tapi memilih arsitektur sederhana yang langsung menyelesaikan akar masalah.\n\n📌 Simpan (Bookmark) postingan ini untuk referensi tim Anda & Follow untuk studi kasus otomasi berikutnya.\n\nApakah alur kerja di tim Anda masih ada yang direkap secara manual? Tulis di kolom komentar yuk! 👇",
                 "tags": ["WorkflowAutomation", "Python", "BusinessEfficiency", "DigitalOperations"]
             },
             "data_en": {
@@ -48,7 +48,7 @@ class LinkedInContentScheduler:
                     {"title": "Automated Customer Handshake", "desc": "Customers receive immediate, structured confirmations without requiring manual admin intervention."}
                 ],
                 "impact": "80% reduction in daily administrative hours, zero data-entry human errors, and real-time inventory clarity for leadership.",
-                "cta": "You don't need an over-engineered SaaS tool when a well-scoped automation script solves the root bottleneck.\n\nWhat manual workflow in your team currently consumes the most wasted hours? Let's discuss below! 👇",
+                "cta": "You don't need an over-engineered SaaS tool when a well-scoped automation script solves the root bottleneck.\n\n📌 Save this post for your engineering team & Follow for more pragmatic architecture breakdowns.\n\nWhat manual workflow in your team currently consumes the most wasted hours? Let's discuss below! 👇",
                 "tags": ["SoftwareEngineering", "Automation", "Python", "Productivity"]
             }
         },
@@ -65,7 +65,7 @@ class LinkedInContentScheduler:
                     {"title": "Master Export", "desc": "Menggabungkan seluruh cabang ke dalam 1 file master bersih yang siap diolah ke dashboard analitik."}
                 ],
                 "impact": "Pekerjaan 8 jam kerja manual berubah menjadi eksekusi 3 detik dengan tingkat akurasi data 100%.",
-                "cta": "Efisiensi sejati bukan soal menyuruh tim bekerja lebih keras, melainkan memberi mereka sistem yang menghilangkan pekerjaan robotik.\n\nBagikan pengalaman Anda: proses data apa yang paling menyita waktu tim finance/operasional Anda? 👇",
+                "cta": "Efisiensi sejati bukan soal menyuruh tim bekerja lebih keras, melainkan memberi mereka sistem yang menghilangkan pekerjaan robotik.\n\n📌 Save postingan ini & Follow untuk tips data engineering dan otomasi alur kerja berikutnya.\n\nBagikan pengalaman Anda: proses data apa yang paling menyita waktu tim finance/operasional Anda? 👇",
                 "tags": ["PythonAutomation", "DataOperations", "EfisiensiBisnis", "FinanceTech"]
             },
             "data_en": {
@@ -77,7 +77,7 @@ class LinkedInContentScheduler:
                     {"title": "Clean Master Export", "desc": "Outputs a clean, unified dataset directly structured for downstream business intelligence dashboards."}
                 ],
                 "impact": "Turned an 8-hour manual recurring chore into a 3-second automated task with 100% data integrity.",
-                "cta": "True operational leverage comes from removing robotic manual tasks from your human talent.\n\nHow does your team currently handle multi-source data consolidation? Let's connect and discuss! 👇",
+                "cta": "True operational leverage comes from removing robotic manual tasks from your human talent.\n\n📌 Bookmark this post for your data pipeline reference & Follow for more workflow insights.\n\nHow does your team currently handle multi-source data consolidation? Let's connect and discuss! 👇",
                 "tags": ["Python", "DataEngineering", "WorkflowAutomation", "OperationalEfficiency"]
             }
         },
@@ -94,7 +94,7 @@ class LinkedInContentScheduler:
                     {"title": "Status Auto-Update", "desc": "Begitu pembayaran terverifikasi, status invoice langsung ter-update lunas dan menonaktifkan reminder berikutnya."}
                 ],
                 "impact": "Tingkat ketepatan waktu pembayaran klien naik hingga 40%, tanpa drama canggung menagih manual.",
-                "cta": "Membangun sistem otomasi tidak harus menunggu perusahaan berskala besar; semakin awal dibangun, semakin sehat cashflow bisnis Anda.\n\nAlur penagihan seperti apa yang saat ini berjalan di bisnis Anda? Tulis di bawah yuk! 👇",
+                "cta": "Membangun sistem otomasi tidak harus menunggu perusahaan berskala besar; semakin awal dibangun, semakin sehat cashflow bisnis Anda.\n\n📌 Simpan postingan ini & Follow untuk breakdown arsitektur sistem berikutnya.\n\nAlur penagihan seperti apa yang saat ini berjalan di bisnis Anda? Tulis di bawah yuk! 👇",
                 "tags": ["CashflowManagement", "OtomasiBisnis", "Fintech", "SoftwareSolutions"]
             },
             "data_en": {
@@ -106,7 +106,7 @@ class LinkedInContentScheduler:
                     {"title": "Reconciliation Trigger", "desc": "Payment webhook confirmation immediately marks the record as settled, halting further notifications."}
                 ],
                 "impact": "40% improvement in on-time receivables collection and zero awkward manual chasing.",
-                "cta": "Building reliable operational automations early creates compounding efficiency as your company scales.\n\nWhat is your current strategy for managing accounts receivable workflows? Share your thoughts below! 👇",
+                "cta": "Building reliable operational automations early creates compounding efficiency as your company scales.\n\n📌 Save this post for financial workflow planning & Follow for practical system engineering tips.\n\nWhat is your current strategy for managing accounts receivable workflows? Share your thoughts below! 👇",
                 "tags": ["FinTech", "Operations", "AutomationArchitecture", "EngineeringLeadership"]
             }
         },
@@ -124,7 +124,7 @@ class LinkedInContentScheduler:
                     {"title": "Zero-Cost Cloud Automation", "desc": "Memanfaatkan cron job gratis di GitHub Actions untuk eksekusi terjadwal di jam prime time tanpa perlu sewa VPS."}
                 ],
                 "impact": "Distribusi konten konsisten 100% tanpa risiko akun, nol biaya server, dan format bacaan yang rapi serta bebas dari AI-slop.",
-                "cta": "Automasi terbaik bukan soal menggantikan pemikiran manusia dengan spam, tapi membuang friksi teknis agar pesan berkualitas terdistribusi secara konsisten.\n\nApakah tim Anda sudah mulai memanfaatkan official API untuk automasi alur kerja? Mari diskusi di kolom komentar! 👇",
+                "cta": "Automasi terbaik bukan soal menggantikan pemikiran manusia dengan spam, tapi membuang friksi teknis agar pesan berkualitas terdistribusi secara konsisten.\n\n📌 Simpan (Bookmark) postingan ini & Follow untuk breakdown automasi Python berikutnya.\n\nApakah tim Anda sudah mulai memanfaatkan official API untuk automasi alur kerja? Mari diskusi di komentar! 👇",
                 "tags": ["SoftwareEngineering", "WorkflowAutomation", "Python", "Productivity"]
             },
             "data_en": {
@@ -137,7 +137,7 @@ class LinkedInContentScheduler:
                     {"title": "Zero-Cost GitHub Actions Cron", "desc": "Runs serverless scheduled triggers during peak engagement windows without maintaining expensive cloud VMs."}
                 ],
                 "impact": "100% compliant automation, zero monthly infrastructure overhead, and human-sounding technical copy that drives engagement.",
-                "cta": "True operational leverage is not about spamming—it is about removing technical friction to keep high-value insights flowing consistently.\n\nAre you leveraging official APIs for your daily workflows? Let's connect and discuss below! 👇",
+                "cta": "True operational leverage is not about spamming—it is about removing technical friction to keep high-value insights flowing consistently.\n\n📌 Bookmark this architecture & Follow for weekly zero-cost system teardowns.\n\nAre you leveraging official APIs for your daily workflows? Let's connect and discuss below! 👇",
                 "tags": ["SoftwareEngineering", "Automation", "Python", "Productivity"]
             }
         },
@@ -154,7 +154,7 @@ class LinkedInContentScheduler:
                     {"title": "Multi-Channel Dispatcher", "desc": "Sistem otomatis menerbitkan izin format PDF berkop resmi dan mengirimkan konfirmasi via Email serta bot Telegram ke tim verifikator."}
                 ],
                 "impact": "Waktu birokrasi pemesanan terpangkas dari 3 hari menjadi 5 menit mandiri, dengan tingkat error jadwal tabrakan 0%.",
-                "cta": "Sistem yang hebat bukan dinilai dari seberapa mahal infrastrukturnya, melainkan seberapa presisi sistem tersebut memecahkan bottleneck harian pengguna.\n\nBagaimana sistem pengelolaan jadwal atau reservasi di tempat kerja Anda saat ini? Mari berdiskusi di komentar! 👇",
+                "cta": "Sistem yang hebat bukan dinilai dari seberapa mahal infrastrukturnya, melainkan seberapa presisi sistem tersebut memecahkan bottleneck harian pengguna.\n\n📌 Simpan panduan ini & Follow untuk studi kasus Google Apps Script dan otomasi cloud berikutnya.\n\nBagaimana sistem pengelolaan jadwal di tempat kerja Anda saat ini? Mari diskusi di komentar! 👇",
                 "tags": ["GoogleAppsScript", "SystemArchitecture", "DigitalTransformation", "WorkflowEfficiency"]
             },
             "data_en": {
@@ -166,7 +166,7 @@ class LinkedInContentScheduler:
                     {"title": "Automated PDF & Webhook Dispatch", "desc": "Generates verified PDF permits on the fly and dispatches instant webhook notifications to Telegram approval channels."}
                 ],
                 "impact": "Turned a 3-day bureaucratic reservation process into a 5-minute self-service workflow with zero schedule clashes.",
-                "cta": "Great engineering is not about over-complicating the stack—it is about choosing the leanest architecture that completely eliminates user friction.\n\nHow does your organization handle appointment or facility scheduling? Let's discuss below! 👇",
+                "cta": "Great engineering is not about over-complicating the stack—it is about choosing the leanest architecture that completely eliminates user friction.\n\n📌 Save this post for your tech team & Follow for more serverless Google Workspace architectures.\n\nHow does your organization handle appointment or facility scheduling? Let's discuss below! 👇",
                 "tags": ["Serverless", "SoftwareArchitecture", "Automation", "TechLeadership"]
             }
         },
@@ -183,7 +183,7 @@ class LinkedInContentScheduler:
                     {"title": "Automated Ledger Reconciliation", "desc": "Sistem mencocokkan nominal dan nomor invoice ke database transaksi, lalu otomatis mengupdate status lunas jika valid."}
                 ],
                 "impact": "Waktu verifikasi terpangkas dari 10 menit manual per struk menjadi 2 detik otomatis, mengeliminasi risiko bukti transfer palsu.",
-                "cta": "Penerapan AI paling bernilai tinggi di 2026 bukanlah membuat gimmick percakapan, melainkan mengotomasi tugas verifikasi data visual yang repetitif.\n\nApakah proses verifikasi pembayaran di bisnis Anda masih dilakukan manual? Tulis pandangan Anda di kolom komentar! 👇",
+                "cta": "Penerapan AI paling bernilai tinggi di 2026 bukanlah membuat gimmick percakapan, melainkan mengotomasi tugas verifikasi data visual yang repetitif.\n\n📌 Simpan (Bookmark) postingan ini & Follow untuk breakdown pipeline AI praktis berikutnya.\n\nApakah proses verifikasi pembayaran di bisnis Anda masih dilakukan manual? Tulis pandangan Anda di kolom komentar! 👇",
                 "tags": ["ArtificialIntelligence", "ComputerVision", "FintechAutomation", "Python"]
             },
             "data_en": {
@@ -195,7 +195,7 @@ class LinkedInContentScheduler:
                     {"title": "Automated Reconciliation Hook", "desc": "Validates amounts against pending ledger records and automatically triggers invoice settlement."}
                 ],
                 "impact": "Reduced verification turnaround from 10 minutes per slip to 2 seconds automated with zero fraud risk.",
-                "cta": "The highest-ROI AI implementations in 2026 are not conversational toys—they are deterministic visual verification pipelines that protect bottom-line operations.\n\nHow is your team currently handling manual document verification? Let's connect and discuss below! 👇",
+                "cta": "The highest-ROI AI implementations in 2026 are not conversational toys—they are deterministic visual verification pipelines that protect bottom-line operations.\n\n📌 Bookmark this pipeline & Follow for actionable AI engineering case studies.\n\nHow is your team currently handling manual document verification? Let's connect and discuss below! 👇",
                 "tags": ["ArtificialIntelligence", "FinTech", "Automation", "EngineeringROI"]
             }
         }
