@@ -2,10 +2,10 @@ name: LinkedIn Automated Poster (Cron)
 
 on:
   schedule:
-    # 1. Posting Pagi (08:30 WITA / 07:30 WIB / 00:30 UTC) - Senin sampai Jumat
+    # 1. Posting Pagi (08:30 WITA / 07:30 WIB / 00:30 UTC) - Senin sampai Jumat (Golden Prime Time)
     - cron: '30 0 * * 1-5'
-    # 2. Posting Siang (12:30 WITA / 11:30 WIB / 04:30 UTC) - Opsional Midweek
-    - cron: '30 4 * * 2,3,4'
+    # 2. Posting Siang (13:00 WITA / 12:00 WIB / 05:00 UTC) - Midweek Lunch Break
+    - cron: '0 5 * * 2,3,4'
 
   # Trigger Manual Kapan Saja dari HP / Web GitHub
   workflow_dispatch:

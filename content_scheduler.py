@@ -140,6 +140,64 @@ class LinkedInContentScheduler:
                 "cta": "True operational leverage is not about spamming—it is about removing technical friction to keep high-value insights flowing consistently.\n\nAre you leveraging official APIs for your daily workflows? Let's connect and discuss below! 👇",
                 "tags": ["SoftwareEngineering", "Automation", "Python", "Productivity"]
             }
+        },
+        {
+            "id": "sipor_booking_system",
+            "title_id": "Arsitektur Sistem Booking Terintegrasi Google Apps Script (Zero-Cost Server)",
+            "title_en": "Building a Zero-Cost Serverless Booking System via Google Apps Script & Sheets",
+            "data_id": {
+                "hook": "Banyak instansi dan bisnis sewa fasilitas mengira sistem reservasi real-time butuh biaya server jutaan rupiah per bulan.\n\nBerikut arsitektur sistem booking mandiri 24/7 yang kami bangun di atas Google Workspace tanpa biaya langganan sepeser pun:",
+                "problem": "Pencatatan manual di buku agenda menyebabkan risiko jadwal bentrok (double booking), antrean fisik pemohon di kantor, dan staf disibukkan dengan konfirmasi telepon yang repetitif.",
+                "points": [
+                    {"title": "Kalender Ketersediaan Real-Time", "desc": "Web app responsif yang menyinkronkan slot jadwal kosong secara dinamis dari database Google Sheets ke smartphone pengguna."},
+                    {"title": "Validasi Konflik Jadwal Otomatis", "desc": "Algoritma validasi langsung memblokir tanggal/jam yang sudah terisi dalam hitungan milidetik sebelum formulir disubmit."},
+                    {"title": "Multi-Channel Dispatcher", "desc": "Sistem otomatis menerbitkan izin format PDF berkop resmi dan mengirimkan konfirmasi via Email serta bot Telegram ke tim verifikator."}
+                ],
+                "impact": "Waktu birokrasi pemesanan terpangkas dari 3 hari menjadi 5 menit mandiri, dengan tingkat error jadwal tabrakan 0%.",
+                "cta": "Sistem yang hebat bukan dinilai dari seberapa mahal infrastrukturnya, melainkan seberapa presisi sistem tersebut memecahkan bottleneck harian pengguna.\n\nBagaimana sistem pengelolaan jadwal atau reservasi di tempat kerja Anda saat ini? Mari berdiskusi di komentar! 👇",
+                "tags": ["GoogleAppsScript", "SystemArchitecture", "DigitalTransformation", "WorkflowEfficiency"]
+            },
+            "data_en": {
+                "hook": "Many facility management teams assume a real-time reservation system requires expensive server instances and complex cloud architectures.\n\nHere is how we architected a 24/7 automated booking engine running entirely on Google Workspace with zero monthly server costs:",
+                "problem": "Manual reservation ledgers caused painful double-booking conflicts, in-person administrative delays, and endless manual phone confirmations.",
+                "points": [
+                    {"title": "Real-Time Slot Engine", "desc": "A lightweight responsive web app dynamically syncing available calendar slots from cloud sheets directly to mobile devices."},
+                    {"title": "Deterministic Conflict Resolver", "desc": "Pre-submission validation locks selected slots in milliseconds, completely preventing overlapping bookings."},
+                    {"title": "Automated PDF & Webhook Dispatch", "desc": "Generates verified PDF permits on the fly and dispatches instant webhook notifications to Telegram approval channels."}
+                ],
+                "impact": "Turned a 3-day bureaucratic reservation process into a 5-minute self-service workflow with zero schedule clashes.",
+                "cta": "Great engineering is not about over-complicating the stack—it is about choosing the leanest architecture that completely eliminates user friction.\n\nHow does your organization handle appointment or facility scheduling? Let's discuss below! 👇",
+                "tags": ["Serverless", "SoftwareArchitecture", "Automation", "TechLeadership"]
+            }
+        },
+        {
+            "id": "groq_vision_receipt_ocr",
+            "title_id": "Otomasi Verifikasi Struk Transfer via AI Vision API (10 Menit jadi 2 Detik)",
+            "title_en": "Automating Bank Receipt Verification with Vision AI API (10 Mins down to 2 Secs)",
+            "data_id": {
+                "hook": "Mencocokkan ratusan gambar struk bukti transfer manual adalah salah satu pekerjaan paling membosankan dan rentan disusupi struk palsu.\n\nIni arsitektur pipeline AI Vision yang kami implementasikan untuk verifikasi instan dalam 2 detik:",
+                "problem": "Admin keuangan kelelahan memeriksa nominal, nama bank, dan tanggal dari tangkapan layar transfer, memperlambat proses konfirmasi order dan rawan human error.",
+                "points": [
+                    {"title": "Image Preprocessing & OCR Ingestion", "desc": "Gambar bukti bayar yang diupload langsung diproses oleh model Vision API untuk ekstraksi teks berkecepatan tinggi."},
+                    {"title": "Structured Schema Extraction", "desc": "LLM mengekstrak entitas penting (Nominal, Bank Pengirim, Rekening Tujuan, Nomor Referensi) ke format JSON terstruktur."},
+                    {"title": "Automated Ledger Reconciliation", "desc": "Sistem mencocokkan nominal dan nomor invoice ke database transaksi, lalu otomatis mengupdate status lunas jika valid."}
+                ],
+                "impact": "Waktu verifikasi terpangkas dari 10 menit manual per struk menjadi 2 detik otomatis, mengeliminasi risiko bukti transfer palsu.",
+                "cta": "Penerapan AI paling bernilai tinggi di 2026 bukanlah membuat gimmick percakapan, melainkan mengotomasi tugas verifikasi data visual yang repetitif.\n\nApakah proses verifikasi pembayaran di bisnis Anda masih dilakukan manual? Tulis pandangan Anda di kolom komentar! 👇",
+                "tags": ["ArtificialIntelligence", "ComputerVision", "FintechAutomation", "Python"]
+            },
+            "data_en": {
+                "hook": "Manually reconciling hundreds of payment transfer screenshots is slow, exhausting, and highly vulnerable to manipulated receipts.\n\nHere is the Vision AI pipeline architecture we built to verify financial receipts in under 2 seconds:",
+                "problem": "Finance staff spent hours cross-checking bank names, transaction amounts, and reference numbers from user uploads, creating huge operational delays.",
+                "points": [
+                    {"title": "High-Speed Vision Extraction", "desc": "Uploaded receipt images are parsed through optimized vision models to capture raw visual data instantly."},
+                    {"title": "Deterministic JSON Schema Mapping", "desc": "Extracts key payment attributes (Amount, Sender Bank, Recipient Account, Timestamp) into strict structured schema."},
+                    {"title": "Automated Reconciliation Hook", "desc": "Validates amounts against pending ledger records and automatically triggers invoice settlement."}
+                ],
+                "impact": "Reduced verification turnaround from 10 minutes per slip to 2 seconds automated with zero fraud risk.",
+                "cta": "The highest-ROI AI implementations in 2026 are not conversational toys—they are deterministic visual verification pipelines that protect bottom-line operations.\n\nHow is your team currently handling manual document verification? Let's connect and discuss below! 👇",
+                "tags": ["ArtificialIntelligence", "FinTech", "Automation", "EngineeringROI"]
+            }
         }
     ]
 

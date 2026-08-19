@@ -18,7 +18,8 @@ def load_env_file():
                     key, val = line.split("=", 1)
                     key = key.strip()
                     val = val.strip().strip("'").strip('"')
-                    os.environ[key] = val
+                    if key not in os.environ:
+                        os.environ[key] = val
     except Exception as e:
         print(f"⚠️ [CONFIG WARNING] Gagal memuat .env: {e}")
 
