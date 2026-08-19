@@ -1,8 +1,16 @@
+import sys
 import random
 from datetime import datetime
 from typing import Tuple, Dict, Any
 from content_generator import LinkedInContentGenerator
 import config
+
+# Force UTF-8 on Windows terminal
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 class LinkedInContentScheduler:
     """
@@ -100,6 +108,37 @@ class LinkedInContentScheduler:
                 "impact": "40% improvement in on-time receivables collection and zero awkward manual chasing.",
                 "cta": "Building reliable operational automations early creates compounding efficiency as your company scales.\n\nWhat is your current strategy for managing accounts receivable workflows? Share your thoughts below! 👇",
                 "tags": ["FinTech", "Operations", "AutomationArchitecture", "EngineeringLeadership"]
+            }
+        },
+        {
+            "id": "linkedin_agent_dogfood",
+            "title_id": "Arsitektur Agen Konten LinkedIn Anti-Slop via Official REST API",
+            "title_en": "Building an Anti-Slop Autonomous LinkedIn Agent via Official REST API v2",
+            "data_id": {
+                "hook": "Banyak akun LinkedIn kena shadowban bukan karena terlalu sering posting, tapi karena automasinya keliru (pakai bot scraping liar).\n\nIni arsitektur 4 modul Python yang kami bangun untuk automasi posting via Official REST API v2 tanpa biaya server sepeser pun:",
+                "problem": "Konten AI di LinkedIn sering kali generik dan membosankan karena penuh frasa klise, sementara tool pihak ketiga yang tidak resmi berisiko memblokir akun secara permanen.",
+                "points": [
+                    {"title": "OAuth 2.0 & Token Handshake Otomatis", "desc": "Menggunakan protokol resmi (scope w_member_social & openid). Skrip menangkap callback lokal, mendeteksi Person URN secara dinamis, dan mengamankan kredensial di environment variable."},
+                    {"title": "Filter Anti-Slop (Rule-Based Sanitizer)", "desc": "Menyaring kata pembuka generik AI, membatasi maksimal 4 hashtag relevan, dan memformat 2 baris awal khusus untuk memicu dwell time '...see more' pada layar mobile."},
+                    {"title": "Bilingual Structured Pillars", "desc": "Konten dibagi ke pilar mingguan (Problem vs Solution, Case Study, dan System Architecture) dalam Bahasa Indonesia dan English."},
+                    {"title": "Zero-Cost Cloud Automation", "desc": "Memanfaatkan cron job gratis di GitHub Actions untuk eksekusi terjadwal di jam prime time tanpa perlu sewa VPS."}
+                ],
+                "impact": "Distribusi konten konsisten 100% tanpa risiko akun, nol biaya server, dan format bacaan yang rapi serta bebas dari AI-slop.",
+                "cta": "Automasi terbaik bukan soal menggantikan pemikiran manusia dengan spam, tapi membuang friksi teknis agar pesan berkualitas terdistribusi secara konsisten.\n\nApakah tim Anda sudah mulai memanfaatkan official API untuk automasi alur kerja? Mari diskusi di kolom komentar! 👇",
+                "tags": ["SoftwareEngineering", "WorkflowAutomation", "Python", "Productivity"]
+            },
+            "data_en": {
+                "hook": "Most LinkedIn accounts get shadowbanned not from high posting frequency, but from dangerous unapproved browser scraping bots.\n\nHere is the 4-module Python architecture we built to automate clean posting via the official REST API v2 with zero server cost:",
+                "problem": "AI-generated content often turns into repetitive slop with cliché openers, while unauthorized third-party extensions risk permanent account bans.",
+                "points": [
+                    {"title": "Official OAuth 2.0 UGC Handshake", "desc": "Implements authorized REST API v2 (w_member_social & openid scopes) with automated localhost callback capture and dynamic Person URN detection."},
+                    {"title": "Anti-Slop Heuristic Sanitizer", "desc": "Bans robotic AI clichés, enforces concise mobile-friendly spacing, and crafts 2-line openers designed for algorithmic dwell time."},
+                    {"title": "Bilingual Strategic Pillars", "desc": "Rotates weekly focus between Problem/Solution teardowns, technical case studies, and engineering ROI insights in both ID and EN."},
+                    {"title": "Zero-Cost GitHub Actions Cron", "desc": "Runs serverless scheduled triggers during peak engagement windows without maintaining expensive cloud VMs."}
+                ],
+                "impact": "100% compliant automation, zero monthly infrastructure overhead, and human-sounding technical copy that drives engagement.",
+                "cta": "True operational leverage is not about spamming—it is about removing technical friction to keep high-value insights flowing consistently.\n\nAre you leveraging official APIs for your daily workflows? Let's connect and discuss below! 👇",
+                "tags": ["SoftwareEngineering", "Automation", "Python", "Productivity"]
             }
         }
     ]
