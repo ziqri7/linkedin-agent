@@ -61,7 +61,18 @@
       "Cutting-edge solution",
       "Robust architecture",
       "Without further ado",
-      "Here's the thing"
+      "Here's the thing",
+      "Honestly?",
+      "Let's be honest",
+      "At its core",
+      "What really matters is",
+      "The heart of the matter",
+      "Experts say",
+      "Leading analysts believe",
+      "Trusted by thousands of teams",
+      "Loved by customers everywhere",
+      "I hope this helps",
+      "Feel free to reach out"
     ],
     "banned_phrases_id": [
       "Di era digital yang serba cepat ini",
@@ -75,7 +86,14 @@
       "Siapa sangka",
       "Membuka potensi tanpa batas",
       "Solusi mutakhir",
-      "Kunci sukses utama"
+      "Kunci sukses utama",
+      "Jujur saja",
+      "Pada hakikatnya masalah sebenarnya adalah",
+      "Para ahli sepakat",
+      "Banyak analis percaya",
+      "Dipercaya ribuan tim di seluruh dunia",
+      "Semoga membantu",
+      "Ada pertanyaan lain?"
     ],
     "formatting_rules": [
       "Hook 2 baris pertama harus tajam, langsung ke masalah/data riil, dan memicu klik '...see more'",
@@ -83,6 +101,8 @@
       "Gunakan jarak baris ganda (double whitespace) untuk kenyamanan baca di layar mobile",
       "Hindari emoji berlebihan; gunakan bullet points tegas (📌, ↳, →, •)",
       "Setiap klaim harus didukung metrik nyata atau perbandingan alur kerja (misal: 8 jam manual vs 3 detik script)",
+      "Hindari kalimat pasif tanpa pelaku (actorless passive); gunakan subjek aktif yang jelas",
+      "Jangan beri nyawa manusia pada software (inanimate agency; misal: ganti 'sistem ini memahami' dengan 'sistem ini memproses')",
       "Panjang postingan optimal: 800 - 1.800 karakter"
     ]
   }
