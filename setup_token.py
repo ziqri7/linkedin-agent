@@ -58,7 +58,7 @@ def run_token_setup():
             client_secret = input("2. Masukkan LINKEDIN_CLIENT_SECRET: ").strip()
 
     redirect_uri = "http://localhost:8000/callback"
-    scopes = "w_member_social"
+    scopes = "openid profile w_member_social"
 
     auth_url = (
         f"https://www.linkedin.com/oauth/v2/authorization?"
