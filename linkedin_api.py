@@ -256,3 +256,49 @@ class LinkedInAPIClient:
             except Exception as e_rest:
                 print(f"❌ [LINKEDIN ERROR] Gagal memposting ke LinkedIn: {e_rest}")
                 return None
+
+    def delete_post(self, post_urn_or_id: str) -> bool:
+        """
+        Deletes a published post from LinkedIn.
+        Accepts full URN (e.g., urn:li:share:123 or urn:li:ugcPost:123) or pure share ID.
+        """
+        if self.mock_mode:
+            print(f"🧪 [MOCK DELETE] Menghapus postingan: {post_urn_or_id}")
+            return True
+
+        if not self.access_token:
+            print("❌ [LINKEDIN ERROR] ACCESS_TOKEN belum dikonfigurasi.")
+            return False
+
+        # Extract clean numeric ID and encoded URN
+        raw_id = post_urn_or_id.split(":")[-1]
+        encoded_urn = urllib.parse.quote(post_urn_or_id, safe="")
+
+        endpoints = [
+            ("UGC Posts", f"https://api.linkedin.com/v2/ugcPosts/{encoded_urn}"),
+            ("Shares API", f"https://api.linkedin.com/v2/shares/{raw_id}"),
+            ("REST Posts", f"https://api.linkedin.com/rest/posts/{encoded_urn}")
+        ]
+
+        for api_name, url in endpoints:
+            try:
+                headers = {
+                    "Authorization": f"Bearer {self.access_token}",
+                    "X-Restli-Protocol-Version": "2.0.0",
+                    "LinkedIn-Version": "202401"
+                }
+                req = urllib.request.Request(url, headers=headers, method="DELETE")
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    if resp.status in (200, 204):
+                        print(f"✅ [DELETE SUCCESS] Postingan ({post_urn_or_id}) berhasil dihapus via {api_name}!")
+                        return True
+            except urllib.error.HTTPError as he:
+                if he.code == 404:
+                    continue
+                print(f"⚠️ [{api_name} DELETE NOTICE] HTTP {he.code}: {he.reason}")
+            except Exception as e:
+                print(f"⚠️ [{api_name} DELETE NOTICE] {e}")
+
+        print(f"❌ [DELETE FAILED] Tidak dapat menghapus postingan {post_urn_or_id} via API.")
+        return False
+

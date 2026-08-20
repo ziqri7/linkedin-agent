@@ -18,11 +18,19 @@ def main():
     # Command: preview
     p_preview = subparsers.add_parser("preview", help="Lihat draf postingan hari ini tanpa menerbitkan")
     p_preview.add_argument("--lang", choices=["id", "en"], default=config.DEFAULT_LANGUAGE, help="Pilihan bahasa (id/en)")
+    p_preview.add_argument("--topic", type=str, default=None, help="Pilih ID topik studi kasus tertentu")
+    p_preview.add_argument("--slot", type=int, choices=[0, 1], default=None, help="Pilih slot sesi (0=pagi, 1=siang)")
 
     # Command: publish
     p_pub = subparsers.add_parser("publish", help="Buat dan terbitkan postingan ke LinkedIn")
     p_pub.add_argument("--lang", choices=["id", "en"], default=config.DEFAULT_LANGUAGE, help="Pilihan bahasa (id/en)")
+    p_pub.add_argument("--topic", type=str, default=None, help="Pilih ID topik studi kasus tertentu")
+    p_pub.add_argument("--slot", type=int, choices=[0, 1], default=None, help="Pilih slot sesi (0=pagi, 1=siang)")
     p_pub.add_argument("--auto", action="store_true", help="Publikasikan langsung tanpa konfirmasi interaktif")
+
+    # Command: delete
+    p_del = subparsers.add_parser("delete", help="Hapus postingan dari LinkedIn berdasarkan URN/ID")
+    p_del.add_argument("post_id", type=str, help="URN postingan (misal: urn:li:share:123 atau ID)")
 
     # Command: custom
     p_custom = subparsers.add_parser("custom", help="Terbitkan teks kustom langsung")
@@ -36,7 +44,7 @@ def main():
     client = LinkedInAPIClient()
 
     if args.command == "preview":
-        pillar, title, post_text = scheduler.get_todays_post(language=args.lang)
+        pillar, title, post_text = scheduler.get_todays_post(language=args.lang, case_id=args.topic, slot_offset=args.slot)
         print(f"\n📑 [PREVIEW POST LINKEDIN - {args.lang.upper()}]")
         print(f"Pilar: {pillar.upper()} | Topik: {title}")
         print("=" * 60)
@@ -45,7 +53,7 @@ def main():
         print(f"Total Karakter: {len(post_text)}")
 
     elif args.command == "publish":
-        pillar, title, post_text = scheduler.get_todays_post(language=args.lang)
+        pillar, title, post_text = scheduler.get_todays_post(language=args.lang, case_id=args.topic, slot_offset=args.slot)
         print(f"\n📑 [DRAFT POST LINKEDIN - {args.lang.upper()}]")
         print(f"Pilar: {pillar.upper()} | Topik: {title}")
         print("=" * 60)
@@ -62,6 +70,14 @@ def main():
         post_id = client.publish_post(post_text)
         if post_id:
             print(f"🎉 Sukses! Post ID: {post_id}")
+
+    elif args.command == "delete":
+        print(f"\n🗑️ Menghapus postingan {args.post_id} dari LinkedIn...")
+        success = client.delete_post(args.post_id)
+        if success:
+            print(f"🎉 Postingan berhasil dihapus!")
+        else:
+            print("❌ Gagal menghapus postingan.")
 
     elif args.command == "custom":
         print(f"\n⏳ Mengirimkan custom post ke LinkedIn...")
@@ -84,3 +100,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

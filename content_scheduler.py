@@ -1,7 +1,6 @@
 import sys
-import random
 from datetime import datetime
-from typing import Tuple, Dict, Any
+from typing import Tuple, Dict, Any, List, Optional
 from content_generator import LinkedInContentGenerator
 import config
 
@@ -15,14 +14,15 @@ if hasattr(sys.stdout, "reconfigure"):
 class LinkedInContentScheduler:
     """
     Schedules and generates goal-directed, high-conversion LinkedIn posts
-    based on weekly pillars in both Indonesian (ID) and English (EN).
+    based on deterministic calendar rotation and rich real-world case studies
+    in both Indonesian (ID) and English (EN).
     """
 
     def __init__(self):
         self.generator = LinkedInContentGenerator()
 
-    # Real-World Case Studies Bank (Bilingual)
-    CASE_STUDIES = [
+    # Real-World Case Studies Bank (Bilingual - 10 Core Topics)
+    CASE_STUDIES: List[Dict[str, Any]] = [
         {
             "id": "wa_order_automation",
             "title_id": "Otomasi Rekap Pesanan WhatsApp ke Google Sheets",
@@ -198,22 +198,159 @@ class LinkedInContentScheduler:
                 "cta": "The highest-ROI AI implementations in 2026 are not conversational toys—they are deterministic visual verification pipelines that protect bottom-line operations.\n\n📌 Bookmark this pipeline & Follow for actionable AI engineering case studies.\n\nHow is your team currently handling manual document verification? Let's connect and discuss below! 👇",
                 "tags": ["ArtificialIntelligence", "FinTech", "Automation", "EngineeringROI"]
             }
+        },
+        {
+            "id": "telegram_server_monitor",
+            "title_id": "Bot Pemantau Server & Health-Check Real-Time via Telegram Webhook",
+            "title_en": "Building a Real-Time Server Health & Incident Alert Bot via Telegram",
+            "data_id": {
+                "hook": "Satu hal paling ditakuti engineer adalah server down berjam-jam tanpa ada yang sadar sampai klien komplain.\n\nBerikut skrip Python 60 baris pemantau status server 24/7 dengan notifikasi instan ke Telegram:",
+                "problem": "Software monitoring enterprise sering kali terlalu berat, mahal, dan membutuhkan konfigurasi dashboard yang rumit untuk tim kecil atau UMKM.",
+                "points": [
+                    {"title": "Daemon Health Polling", "desc": "Script ringan memeriksa HTTP response time, kapasitas disk, CPU usage, dan status service kritis setiap 60 detik."},
+                    {"title": "Incident Alerting & Markdown Cards", "desc": "Jika endpoint 500 atau RAM >90%, bot langsung mengirim kartu peringatan merah ke grup Telegram engineer."},
+                    {"title": "One-Click Remote Action", "desc": "Menyediakan tombol inline keyboard di Telegram untuk trigger restart service atau cek log terakhir langsung dari HP."}
+                ],
+                "impact": "Waktu deteksi insiden (MTTD) turun dari 45 menit menjadi <30 detik, tanpa biaya software monitoring berbayar.",
+                "cta": "Keandalan infrastruktur dibangun dari kecepatan respons, bukan kompleksitas tool yang Anda bayar tiap bulan.\n\n📌 Bookmark postingan ini & Follow untuk tips devops dan otomasi server sederhana.\n\nBagaimana cara tim Anda memantau status uptime server saat ini? Tulis di komentar ya! 👇",
+                "tags": ["DevOps", "Python", "ServerMonitoring", "TelegramBot"]
+            },
+            "data_en": {
+                "hook": "Every engineer's nightmare is a silent server outage that goes unnoticed until an angry client sends a message.\n\nHere is a lean 60-line Python daemon that monitors server health 24/7 with instant Telegram incident alerts:",
+                "problem": "Enterprise observability suites are often bloated, pricey, and overly complex for small engineering teams managing lean infrastructure.",
+                "points": [
+                    {"title": "Deterministic Heartbeat", "desc": "A lightweight background daemon tests HTTP endpoints, CPU load, and disk headroom every 60 seconds."},
+                    {"title": "Structured Incident Cards", "desc": "Dispatches formatted Markdown error cards to a dedicated Telegram channel immediately upon detecting anomalies."},
+                    {"title": "Inline Command Trigger", "desc": "Equipped with interactive inline buttons allowing on-call devs to restart services or inspect stdout directly from their phone."}
+                ],
+                "impact": "Reduced Mean Time to Detect (MTTD) from 45 minutes down to <30 seconds with zero monthly SaaS spend.",
+                "cta": "System reliability is driven by immediate feedback loops, not the price tag of your monitoring software.\n\n📌 Save this architecture & Follow for practical backend engineering breakdowns.\n\nHow do you currently handle uptime alerts for your production services? Let's connect! 👇",
+                "tags": ["DevOps", "Python", "CloudArchitecture", "ReliabilityEngineering"]
+            }
+        },
+        {
+            "id": "live_tv_display_dashboard",
+            "title_id": "Sistem Dashboard TV Display Operasional Real-Time Bebas Biaya Server",
+            "title_en": "Building a Real-Time Operations TV Display Dashboard with Zero Server Cost",
+            "data_id": {
+                "hook": "Banyak manajer operasional ingin memasang TV Display di kantor atau gudang untuk memantau performa harian secara live.\n\nIni arsitektur dashboard web statis otomatis yang terhubung langsung ke Google Sheets:",
+                "problem": "Membeli lisensi software Business Intelligence untuk sekadar display layar TV kantor sering memakan biaya langganan jutaan per bulan.",
+                "points": [
+                    {"title": "Data Ingestion via Cloud Sheets", "desc": "Data KPI, pesanan harian, dan antrean kerja diinput tim lapangan ke Google Sheets biasa tanpa perlu belajar software baru."},
+                    {"title": "Auto-Refreshing Frontend", "desc": "Tampilan dashboard web responsif melakukan polling background setiap 15 detik menggunakan vanilla JavaScript ringan."},
+                    {"title": "Kiosk Mode Deployment", "desc": "Cukup dibuka via browser Smart TV atau mini PC Android tanpa perlu setup server database khusus."}
+                ],
+                "impact": "Transparansi KPI operasional meningkat drastis, tim lapangan lebih termotivasi, dan biaya software Rp0.",
+                "cta": "Solusi terbaik adalah yang termudah diadopsi oleh tim di lapangan, bukan yang paling rumit konfigurasinya.\n\n📌 Simpan referensi ini & Follow untuk eksplorasi dashboard dan otomasi alur kerja berikutnya.\n\nApakah kantor atau gudang Anda sudah memiliki layar display KPI live? Mari diskusi di bawah! 👇",
+                "tags": ["BusinessIntelligence", "FrontendEngineering", "DigitalOperations", "Management"]
+            },
+            "data_en": {
+                "hook": "Operations managers often want live TV KPI displays across warehouse floors and office spaces to track throughput in real-time.\n\nHere is how to deploy a responsive live dashboard connected to cloud spreadsheets with zero hosting costs:",
+                "problem": "Paying enterprise BI seat licenses solely to project static dashboards onto office TVs wastes substantial IT budget.",
+                "points": [
+                    {"title": "Spreadsheet-Backed Ingestion", "desc": "Field supervisors update standard cloud sheets without needing to learn complicated new database tools."},
+                    {"title": "Zero-Latency Client Polling", "desc": "Lightweight vanilla JS frontend fetches structured JSON endpoints asynchronously every 15 seconds."},
+                    {"title": "Stateless Kiosk Execution", "desc": "Runs seamlessly inside any Smart TV browser or inexpensive micro-compute stick."}
+                ],
+                "impact": "Immediate operational clarity across warehouse teams with $0 in monthly recurring software fees.",
+                "cta": "The best operational tools are the ones easiest for non-technical teams to maintain.\n\n📌 Bookmark this architecture & Follow for more pragmatic data display solutions.\n\nHow does your team currently visualize real-time warehouse or office KPIs? Let's discuss! 👇",
+                "tags": ["DataVisualization", "Frontend", "Operations", "Productivity"]
+            }
+        },
+        {
+            "id": "auto_pdf_report_dispatch",
+            "title_id": "Otomasi Rekapitulasi Laporan PDF Eksekutif & Email Dispatcher",
+            "title_en": "Automating Executive PDF Report Generation & Scheduled Email Dispatch",
+            "data_id": {
+                "hook": "Membuat dokumen laporan mingguan untuk jajaran pimpinan adalah rutinitas yang sering menyita setengah hari kerja staf admin.\n\nIni arsitektur generator PDF otomatis yang menyusun tabel, grafik, dan mengirimkannya tepat waktu:",
+                "problem": "Admin harus mengumpulkan data dari berbagai sumber, merapikan layout di Word/Canva, mengekspor ke PDF, lalu mengirim email manual satu per satu.",
+                "points": [
+                    {"title": "Automated Data Aggregation", "desc": "Skrip menarik rekapan angka penjualan dan log performa mingguan langsung dari database."},
+                    {"title": "Dynamic HTML-to-PDF Engine", "desc": "Template laporan berbasis HTML/CSS disuntikkan data dinamis dan di-render menjadi PDF berkualitas tinggi dalam 1 detik."},
+                    {"title": "Scheduled SMTP Dispatcher", "desc": "Cron job mengirimkan email laporan berkas PDF resmi ke jajaran direksi setiap Senin pukul 07:00 pagi."}
+                ],
+                "impact": "Waktu pembuatan laporan terpangkas dari 4 jam menjadi 0 detik otomatis, dengan format yang selalu rapi dan konsisten.",
+                "cta": "Otomatisasi bukan untuk menggantikan manusia, tapi membebaskan manusia dari pekerjaan klerikal agar bisa fokus pada analisis strategis.\n\n📌 Simpan postingan ini & Follow untuk studi kasus otomasi laporan berikutnya.\n\nBerapa jam yang dihabiskan tim Anda setiap pekan untuk membuat laporan berkala? Bagikan cerita Anda di bawah! 👇",
+                "tags": ["PythonAutomation", "BusinessOperations", "Productivity", "ExecutiveReporting"]
+            },
+            "data_en": {
+                "hook": "Compiling weekly executive update reports is a manual routine that often eats half a working day for administrative staff.\n\nHere is an automated PDF rendering and dispatch engine that compiles clean executive briefs in seconds:",
+                "problem": "Staff manually aggregate spreadsheets, style tables in document editors, export PDFs, and draft individualized emails weekly.",
+                "points": [
+                    {"title": "Data Aggregation Layer", "desc": "Pulls verified weekly KPIs and transaction totals directly from upstream transactional tables."},
+                    {"title": "HTML-to-PDF Template Engine", "desc": "Injects dynamic figures into a branded HTML/CSS template, rendering vector-quality PDF attachments instantly."},
+                    {"title": "Automated Mail Dispatcher", "desc": "Dispatches personalized executive summaries to leadership inboxes every Monday at 07:00 AM sharp."}
+                ],
+                "impact": "Eliminated 4 hours of recurring manual paperwork weekly while guaranteeing 100% data consistency.",
+                "cta": "Automation frees human talent from clerical drag so they can focus on strategic execution.\n\n📌 Bookmark this post & Follow for actionable data pipeline and reporting workflows.\n\nHow many hours does your team currently spend compiling weekly status reports? Let's connect below! 👇",
+                "tags": ["Python", "Automation", "DataEngineering", "ExecutiveLeadership"]
+            }
+        },
+        {
+            "id": "multi_tenant_wa_bot",
+            "title_id": "Arsitektur Multi-Tenant WhatsApp Bot untuk Ratusan Pelanggan UMKM",
+            "title_en": "Architecting a Scalable Multi-Tenant WhatsApp Bot for Hundreds of SMBs",
+            "data_id": {
+                "hook": "Banyak developer kesulitan saat bot WhatsApp yang awalnya dirancang untuk 1 toko harus melayani puluhan tenant bisnis sekaligus.\n\nIni arsitektur multi-tenant berbasis Node.js yang kami deploy untuk operasional ratusan tenant stabil:",
+                "problem": "Single-tenant bot cepat mengalami memory leak, tabrakan nomor CS, dan sulit mengisolasi konfigurasi katalog antar merchant.",
+                "points": [
+                    {"title": "Dynamic Session & Registry Isolation", "desc": "Setiap merchant memiliki kredensial sesi WhatsApp, katalog produk, dan token API yang terisolasi dalam folder konfigurasi independen."},
+                    {"title": "Access Control & Tiered Features", "desc": "Middleware memvalidasi paket langganan (Starter vs Pro) sebelum mengeksekusi fitur berat seperti blast promo atau integrasi webhook."},
+                    {"title": "Two-Way Human Handoff", "desc": "Ketika pelanggan meminta bicara dengan CS manusia, bot menahan auto-reply dan mengarahkan chat ke nomor WhatsApp operator secara seamless."}
+                ],
+                "impact": "Satu server VPS sanggup menangani ratusan tenant bersamaan dengan konsumsi RAM rendah dan keandalan tinggi.",
+                "cta": "Arsitektur yang matang sejak awal akan menyelamatkan bisnis Anda dari perombakan kode yang menyakitkan saat jumlah pengguna meledak.\n\n📌 Simpan (Bookmark) postingan ini & Follow untuk eksplorasi arsitektur sistem backend berikutnya.\n\nFitur apa yang paling krusial menurut Anda saat membangun bot multi-tenant? Tulis di komentar! 👇",
+                "tags": ["NodeJS", "SoftwareArchitecture", "MultiTenant", "WhatsAppAutomation"]
+            },
+            "data_en": {
+                "hook": "Scaling a WhatsApp automation bot from a single business to hundreds of independent merchant tenants is where most architectures break.\n\nHere is the scalable multi-tenant Node.js architecture we deployed to handle hundreds of active accounts seamlessly:",
+                "problem": "Single-instance designs suffer from session memory bloat, shared database collisions, and lack of tenant feature isolation.",
+                "points": [
+                    {"title": "Isolated Session Registry", "desc": "Each business tenant maintains isolated session stores, config files, and credential scopes independently."},
+                    {"title": "Tiered Feature Gates", "desc": "Granular middleware verifies subscription tiers before allowing access to compute-heavy features like broadcasts or webhook relays."},
+                    {"title": "2-Way Human Escalation", "desc": "Pauses auto-responses and bridges customer conversations to human agent devices with persistent state tracking."}
+                ],
+                "impact": "Enables a single lightweight VPS to orchestrate hundreds of live client bots with minimal RAM footprint.",
+                "cta": "Investing in solid architectural boundaries early prevents catastrophic refactors when user demand spikes.\n\n📌 Bookmark this architecture & Follow for scalable backend system teardowns.\n\nWhat is your biggest engineering challenge when scaling multi-tenant SaaS services? Let's discuss below! 👇",
+                "tags": ["SoftwareArchitecture", "BackendEngineering", "NodeJS", "SaaSDevelopment"]
+            }
         }
     ]
 
-    def get_todays_post(self, language: str = None) -> Tuple[str, str, str]:
+    def get_todays_post(self, language: Optional[str] = None, case_id: Optional[str] = None, slot_offset: Optional[int] = None) -> Tuple[str, str, str]:
         """
         Determines the strategic content pillar and produces a formatted LinkedIn post.
+        Uses deterministic date-index rotation to GUARANTEE zero back-to-back duplicates across days/slots.
         Language can be 'id' (Indonesian) or 'en' (English).
         """
         lang = language or config.DEFAULT_LANGUAGE
-        weekday = datetime.now().weekday() # 0 = Monday, 2 = Wednesday, 4 = Friday
-        selected_case = random.choice(self.CASE_STUDIES)
+        now = datetime.now()
+        day_of_year = now.timetuple().tm_yday
+        weekday = now.weekday() # 0 = Monday, 2 = Wednesday, 4 = Friday
+        hour = now.hour
+
+        # Determine slot: 0 = morning session, 1 = afternoon session
+        if slot_offset is not None:
+            slot = slot_offset
+        else:
+            slot = 1 if hour >= 11 else 0
+
+        # Select case study deterministically or by explicit ID
+        if case_id:
+            matched = [c for c in self.CASE_STUDIES if c["id"] == case_id]
+            if matched:
+                selected_case = matched[0]
+            else:
+                idx = (day_of_year * 2 + slot) % len(self.CASE_STUDIES)
+                selected_case = self.CASE_STUDIES[idx]
+        else:
+            idx = (day_of_year * 2 + slot) % len(self.CASE_STUDIES)
+            selected_case = self.CASE_STUDIES[idx]
 
         case_data = selected_case["data_en"] if lang == "en" else selected_case["data_id"]
         title = selected_case["title_en"] if lang == "en" else selected_case["title_id"]
 
-        pillar_name = "case_study"
+        # Determine content pillar name
         if weekday == 0:
             pillar_name = "problem_solution"
         elif weekday == 2:
@@ -236,13 +373,14 @@ class LinkedInContentScheduler:
 
 if __name__ == "__main__":
     scheduler = LinkedInContentScheduler()
-    print("\n--- PREVIEW POST BAHASA INDONESIA ---")
+    print("\n--- PREVIEW POST BAHASA INDONESIA (DETERMINISTIC ROTATION) ---")
     p, t, content_id = scheduler.get_todays_post(language="id")
-    print(f"Pilar: {p} | Judul: {t}\n")
+    print(f"Pilar: {p.upper()} | Judul: {t}\n")
     print(content_id)
 
     print("\n" + "=" * 60)
     print("\n--- PREVIEW POST ENGLISH (GLOBAL) ---")
     p_en, t_en, content_en = scheduler.get_todays_post(language="en")
-    print(f"Pillar: {p_en} | Title: {t_en}\n")
+    print(f"Pillar: {p_en.upper()} | Title: {t_en}\n")
     print(content_en)
+
